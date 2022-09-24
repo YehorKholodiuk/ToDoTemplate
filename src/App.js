@@ -1,23 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
+import { v4 as uuidv4 } from 'uuid';
+import {useState} from "react";
+import ToDoList from "./ToDoList";
 
 function App() {
+  const [list,setList] = useState ([
+    {
+      title:'Learn React',
+      id: uuidv4(),
+      isDone: false,
+    },
+    {
+      title:'Learn JS',
+      id: uuidv4(),
+      isDone: false,
+    },
+    {
+      title:'Learn FrontEnd ',
+      id: uuidv4(),
+      isDone: false,
+    }
+  ])
+
+  function addNewTask(title){
+    setList(
+        [...list,{
+          id:uuidv4(),
+          title,
+          isDone:false,
+        }]
+    )
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+<ToDoList list={list} addNewTask={addNewTask}/>
     </div>
   );
 }
