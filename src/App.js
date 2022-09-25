@@ -42,9 +42,25 @@ function App() {
     newList[currentIndex-1] = currentTask
     setList(newList)
   }
+
+  function moveDown(id){
+    const newList = [...list]
+    const currentIndex = list.indexOf(newList.find(el => el.id === id))
+    console.log(currentIndex)
+
+    const currentTask = newList[currentIndex]
+    newList[currentIndex] = newList[currentIndex +  1]
+    newList[currentIndex + 1] = currentTask
+    setList(newList)
+  }
+
+  const deleteTask = (id) => {
+    const newList = list.filter(el => el.id !== id)
+    setList(newList)
+  }
   return (
     <div className="App">
-<ToDoList list={list} addNewTask={addNewTask} moveUp={moveUp}/>
+<ToDoList list={list} addNewTask={addNewTask} moveUp={moveUp} moveDown={moveDown} deleteTask={deleteTask}/>
     </div>
   );
 }
