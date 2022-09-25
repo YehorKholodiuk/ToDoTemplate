@@ -32,9 +32,19 @@ function App() {
         }]
     )
   }
+  function moveUp(id) {
+    const newList = [...list]
+       const currentIndex = list.indexOf(newList.find(el => el.id === id))
+    console.log(currentIndex)
+
+    const currentTask = newList[currentIndex]
+    newList[currentIndex] = newList[currentIndex - 1]
+    newList[currentIndex-1] = currentTask
+    setList(newList)
+  }
   return (
     <div className="App">
-<ToDoList list={list} addNewTask={addNewTask}/>
+<ToDoList list={list} addNewTask={addNewTask} moveUp={moveUp}/>
     </div>
   );
 }

@@ -14,6 +14,8 @@ const AddToDo = (props) => {
             />
             <button onClick={saveButtonHandler}>Save</button>
             <button onClick={props.toggleAddTask}>Cancel</button>
+
+
         </div>
     );
 };

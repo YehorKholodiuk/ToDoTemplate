@@ -12,7 +12,7 @@ const ToDoList = (props) => {
             <h1>ToDoList</h1>
             {!openAddInput && <button onClick={toggleAddTask}>Add New Task</button>}
             {openAddInput && <AddToDo toggleAddTask={toggleAddTask} addNewTask={props.addNewTask}/>}
-            {props.list.map(el => <ListItem key={el.id} task={el}/>)}
+            {props.list.map((el,index) => <ListItem key={el.id} task={el} index={index} moveUp={props.moveUp}/>)}
         </div>
     );
 };
