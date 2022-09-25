@@ -14,6 +14,7 @@ const ToDoList = (props) => {
             {openAddInput && <AddToDo toggleAddTask={toggleAddTask} addNewTask={props.addNewTask}/>}
             {props.list.map((el,index) => <ListItem key={el.id}
                                                     task={el}
+                                                    list={props.list}
                                                     index={index}
                                                     moveUp={props.moveUp}
                                                     moveDown={props.moveDown}
